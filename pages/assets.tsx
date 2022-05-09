@@ -37,7 +37,7 @@ const Assets = () => {
 
   return (
     <div>
-      <FlexLayout padding="2vh" justifyContent="center">
+      <FlexLayout padding="2vw" justifyContent="center">
         <SimpleText>My assets</SimpleText>
       </FlexLayout>
       <FlexLayout flexDirection="row" flexWrap="wrap" justifyContent="center">

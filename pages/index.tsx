@@ -9,10 +9,14 @@ import Orders from '../components/Orders';
 import useAsyncEffect from 'use-async-effect';
 import { useLocalStorage } from 'usehooks-ts';
 
+interface paramTypes {
+  sell_metadata?: string,
+}
+
 const Home = () => {
   const { client } = useContext(ClientContext)
   const [ address ] = useLocalStorage('IMBTL_address', '')
-  const [params, setParams] = useState({})
+  const [params, setParams] = useState<paramTypes>({})
   const { data: orders, error, mutate } = useSWR<ImmutableMethodResults.ImmutableGetOrdersResult>(`${publicApiUrl}/orders`, () => client?.getOrders(params))
 
   useAsyncEffect(async () => {
@@ -30,7 +34,7 @@ const Home = () => {
   }, [mutate])
 
   async function handleSearch(e: SyntheticEvent) {
-    if (client !== null) {
+    if (client) {
       const newParams = {
         sell_metadata:'{"mana":["4"]}',
       }
