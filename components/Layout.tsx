@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Header from './Header'
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <div>
       <Header />
